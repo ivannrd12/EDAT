@@ -66,6 +66,7 @@ public class ColaMixta<E> extends AbstractQueue<E> {
 	}
 
 	public E peek(int index) {
+		return null;
 		// TODO A completar por el estudiante
 		// TODO To be completed by the students
 	}
@@ -103,6 +104,36 @@ public class ColaMixta<E> extends AbstractQueue<E> {
 		
 		
 
+	}
+
+	@Override
+	public boolean offer(E e) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'offer'");
+	}
+
+	@Override
+	public E poll() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'poll'");
+	}
+
+	@Override
+	public E peek() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'peek'");
+	}
+
+	@Override
+	public Iterator<E> iterator() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'iterator'");
+	}
+
+	@Override
+	public int size() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'size'");
 	}
 
 }
