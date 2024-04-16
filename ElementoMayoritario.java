@@ -1,190 +1,108 @@
+package es.ubu.inf.edat.p02_2324;
 
-holaaaaa
-/**
- * Clase que alberga el código completo para la Práctica 01
- * 
- * @author Ivan Nebreda
- *
- */
-public class ElementoMayoritario {
+import java.util.AbstractQueue;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class ColaMixta<E> extends AbstractQueue<E> {
+	
+	
+	protected class NodoMixto extends AbstractQueue<E> {
+
+		private List<E> contenido = new ArrayList<E>();
+		private NodoMixto siguiente;
+		private NodoMixto inicio;
+		private NodoMixto fin;
+		private int N;
+		private int tamArray;
+		
+		// TODO A completar por el estudiante
+		// TODO To be completed by the students
+		
+		@Override
+		public boolean offer(E e) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+		@Override
+		public E poll() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		@Override
+		public E peek() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		@Override
+		public Iterator<E> iterator() {
+			// TODO Auto-generated method stub
+			return new IteradorMixto();
+		}
+		@Override
+		public int size() {
+			// TODO Auto-generated method stub
+			return N;
+		}
+	
+
+	}
+
+	// TODO Definicion de variables de clase ColaMixta
+	// TODO Variable definition class ColaMixta
 
 	/**
-	 * Para poder devolver dos valores diferentes por parte de un mismo método, se
-	 * necesita una clase sencilla con dos atributos. En este caso, la clase
-	 * RespuestaMayoritaria permite encapsular en el mismo objeto: - elemento
-	 * mayoritario encontrado - el numero de veces que se repite (o frecuencia) como
-	 * un entero
+	 * Constructor de la clase
 	 * 
-	 * Al devolver la respuesta de cada metodo, se deberán incluir los dos datos
-	 * encontrados dentro de un objeto de este tipo y devolverlo como respuesta.
-	 * 
-	 * @author bbaruque
+	 * @param tamañoNodo Numero de elementos que se introducen como maximo en un
+	 *                   nodo
+	 */
+	public ColaMixta(int tamañoNodo) {
+		// TODO A completar por el estudiante
+		// TODO To be completed by the students
+		
+		
+	}
+
+	public E peek(int index) {
+		// TODO A completar por el estudiante
+		// TODO To be completed by the students
+	}
+
+
+
+	/**
+	 * Iterador que permite recorrer todos los elementos de la cola. Debe recorrer
+	 * cada segmento de la misma (empleando el iterador del nodo) y pasar al nodo
+	 * siguiente para repetir la operación. Se detiene al no haber más nodos.
 	 *
 	 * @param <E>
 	 */
-	public static class RespuestaMayoritaria<E> {
+	private class IteradorMixto implements Iterator<E> {
 
-		private E elemento;
-		private int frecuencia;
-
-		public RespuestaMayoritaria(E elemento, int frecuencia) {
-			this.elemento = elemento;
-			this.frecuencia = frecuencia;
+		public IteradorMixto() {
+			
+			
+		}
+		@Override
+		public boolean hasNext() {
+			// TODO Auto-generated method stub
+			return false;
 		}
 
-		public E getElemento() {
-			return elemento;
+		@Override
+		public E next() {
+			// TODO Auto-generated method stub
+			return null;
 		}
 
-		public int getFrecuencia() {
-			return frecuencia;
-		}
-	}
-
-	/**
-	 * 
-	 * @param <E>
-	 * @param array
-	 * @return
-	 */
-	public static <E> RespuestaMayoritaria<E> mayoritarioIterativo(E[] array) {
-
-		int frecuenciaRef = 0;
-
-		int indice = 0;
-
-		for (int i = 0; i < array.length; i++) {
-
-			if (calcularFrecuencia(array[i], array) > frecuenciaRef) {
-
-				frecuenciaRef = calcularFrecuencia(array[i], array);
-				indice = i;
-			}
-
-		}
-
-		if (frecuenciaRef > (array.length / 2)) {
-
-			RespuestaMayoritaria<E> mayoritario = new RespuestaMayoritaria<E>(array[indice], frecuenciaRef);
-
-			return mayoritario;
-
-		} else {
-
-			RespuestaMayoritaria<E> mayoritario = new RespuestaMayoritaria<E>(null, 0);
-			return mayoritario;
-		}
+		// TODO A completar por el estudiante
+		// TODO To be completed by the students
+		
+		
+		
 
 	}
 
-	/**
-	 * 
-	 * @param <E>
-	 * @param array
-	 * @return
-	 */
-	public static <E> RespuestaMayoritaria<E> mayoritarioRecursivo(E[] array) {
-
-		int frecuenciaRefA = 0;
-
-		int frecuenciaRefB = 0;
-
-		int indiceA = 0;
-
-		int indiceB = 0;
-
-		for (int i = 0; i < array.length / 2; i++) {
-
-			if (calcularFrecuenciaMitadA(array[i], array) > frecuenciaRefA) {
-
-				frecuenciaRefA = calcularFrecuenciaMitadA(array[i], array);
-				indiceA = i;
-			}
-
-		}
-
-		for (int i = array.length / 2; i < array.length; i++) {
-
-			if (calcularFrecuenciaMitadB(array[i], array) > frecuenciaRefB) {
-
-				frecuenciaRefB = calcularFrecuenciaMitadB(array[i], array);
-				indiceB = i;
-			}
-
-		}
-
-		if (calcularFrecuencia(array[indiceA], array) > (array.length / 2)) {
-
-			RespuestaMayoritaria<E> mayoritario = new RespuestaMayoritaria<E>(array[indiceA],
-					calcularFrecuencia(array[indiceA], array));
-
-			return mayoritario;
-
-		} else if (calcularFrecuencia(array[indiceB], array) > (array.length / 2)) {
-
-			RespuestaMayoritaria<E> mayoritario = new RespuestaMayoritaria<E>(array[indiceB],
-					calcularFrecuencia(array[indiceB], array));
-
-			return mayoritario;
-		} else {
-
-			RespuestaMayoritaria<E> mayoritario = new RespuestaMayoritaria<E>(null, 0);
-			return mayoritario;
-
-		}
-
-	}
-
-	public static <E> int calcularFrecuencia(E objeto, E[] array) {
-
-		int contador = 0;
-
-		for (int i = 0; i < array.length; i++) {
-
-			if (objeto == array[i]) {
-
-				contador++;
-			}
-
-		}
-
-		return contador;
-	}
-
-	public static <E> int calcularFrecuenciaMitadA(E objeto, E[] array) {
-
-		int contador = 0;
-
-		for (int i = 0; i < array.length / 2; i++) {
-
-			if (objeto == array[i]) {
-
-				contador++;
-			}
-
-		}
-
-		return contador;
-	}
-
-	public static <E> int calcularFrecuenciaMitadB(E objeto, E[] array) {
-
-		int contador = 0;
-
-		for (int i = array.length / 2; i < array.length; i++) {
-
-			if (objeto == array[i]) {
-
-				contador++;
-			}
-
-		}
-
-		return contador;
-	}
-
-	// Es posible emplear métodos auxiliares para la ayuda a la implementación de
-	// los métodos obligatorios.
-	
 }
-
